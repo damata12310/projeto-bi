@@ -53,7 +53,7 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index: 100;
 }
 .sidebar.close{
     width: 88px;
@@ -307,3 +307,84 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
+.content-dash {
+    padding: 12px 60px;
+}
+
+.content-dash form input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+    padding: 15px 15px 15px 20px;
+}
+
+.content-dash form button:hover {
+    outline: none;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    cursor: pointer;
+}
+.content-dash form button {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    color: var(--text-color);
+    transition: var(--tran-05);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.text-dash-600 {
+    font-weight: 600;
+    color: #707070;
+    margin-top: 20px;
+}
+
+.content-dash form label {
+    margin-top: 10px;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+    color: var(--text-color);
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-success hr {
+    border-top-color: #b1dfbb;
+}
+
+.alert-success .alert-link {
+    color: #0b2e13;
+}
+

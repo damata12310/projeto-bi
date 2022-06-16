@@ -307,6 +307,16 @@
                                             </ul>
                                         </div>
                                     @endif
+
+                                    @if(session('danger'))
+                                        <div class="alert alert-danger">
+                                            {{ session('danger') }}
+                                        </div>
+                                    @else
+                                        <div class="alert alert-sucess">
+                                            {{ session('sucess') }}
+                                        </div>
+                                    @endif
                                     <form method="POST" class="search-form" action="{{route('auth.user')}}">
                                         @csrf
                                         <input type="text" class="" placeholder="Email" name="email"/>

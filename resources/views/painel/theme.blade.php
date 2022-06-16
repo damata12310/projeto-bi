@@ -8,6 +8,7 @@
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{url('/public/painel/assets/css/style.css')}}">
+{{--    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/bootstrap.css')}}">--}}
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -41,14 +42,14 @@
 
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{route('dash.home')}}">
                         <i class='bx bx-home-alt icon' ></i>
                         <span class="text nav-text">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{route('createEmpresa.painel')}}">
                         <i class='bx bx-briefcase-alt icon'></i>
                         <span class="text nav-text">Nova Empresa</span>
                     </a>
@@ -125,7 +126,9 @@
 </nav>
 
 <section class="home">
-    @yield('conteudo')
+    <div class="content-dash">
+        @yield('conteudo')
+    </div>
 </section>
 
 
