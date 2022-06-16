@@ -56,7 +56,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{route('createUsuario.painel')}}">
                         <i class='bx bx-user icon'></i>
                         <span class="text nav-text">Novo Usuário</span>
                     </a>
