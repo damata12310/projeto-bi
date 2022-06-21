@@ -56,9 +56,23 @@
                 </li>
 
                 <li class="nav-link">
+                    <a href="{{route('listEmpresa.painel')}}">
+                        <i class='bx bx-briefcase-alt-2 icon'></i>
+                        <span class="text nav-text">Listar Empresas</span>
+                    </a>
+                </li>
+
+                <li class="nav-link" >
                     <a href="{{route('createUsuario.painel')}}">
                         <i class='bx bx-user icon'></i>
                         <span class="text nav-text">Novo Usuário</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="{{route('listUsuario.painel')}}">
+                        <i class='bx bxs-user-detail icon' ></i>
+                        <span class="text nav-text">Listar Usuários</span>
                     </a>
                 </li>
 

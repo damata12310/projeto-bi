@@ -18,6 +18,13 @@ class PainelController extends Controller
         return view('painel.createEmpresa');
     }
 
+    public function listEmpresa()
+    {
+        $empresas = Empresa::get();
+
+        return view('painel.listEmpresa')->with('empresas', $empresas);
+    }
+
     public function createUsuario()
     {
         $empresas = Empresa::get();
@@ -99,4 +106,21 @@ class PainelController extends Controller
             }
         }
     }
+
+    public function deleteEmpresa(Request $request)
+    {
+        if(isset($request)){
+            Empresa::destroy($request->id);
+            return redirect('/painel/listEmpresa')->with('success', 'Empresa deletada com sucesso!');
+        }else {
+            return redirect('/painel/listEmpresa')->with('error', 'Oooops, algo deu errado tente novamente!!!');
+        }
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
+    }
 }
+
+

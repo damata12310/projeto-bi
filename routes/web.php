@@ -33,9 +33,13 @@ Route::middleware(['master'])->group(function (){
 
     //POST EMPRESA
     Route::post('/painel/criaEmpresa', [PainelController::class, 'criaEmpresa'])->name('criaEmpresa.painel');
+    Route::post('/painel/editaEmpresa', [PainelController::class, 'editaEmpresa'])->name('editaEmpresa.painel');
+    Route::get('/painel/listEmpresa', [PainelController::class, 'listEmpresa'])->name('listEmpresa.painel');
+    Route::get('/painel/deleteEmpresa/{id}', [PainelController::class, 'deleteEmpresa'])->name('deleteEmpresa.painel');
 
     //POST USUARIO
     Route::post('/painel/criaUsuario', [PainelController::class, 'criaUsuario'])->name('criaUsuario.painel');
+    Route::post('/painel/listUsuario', [PainelController::class, 'listUsuario'])->name('listUsuario.painel');
 
 });
 
