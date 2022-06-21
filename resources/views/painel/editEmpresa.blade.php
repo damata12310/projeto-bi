@@ -1,7 +1,7 @@
 @extends('painel.theme')
 @section('conteudo')
     <div class="text">Editar Empresa: {{$empresa->nome}}</div>
-    <form class="" action="{{ route('editaEmpresa.painel') }}" method="POST" enctype="multipart/form-data">
+    <form class="" action="{{ route('editaEmpresaPost.painel') }}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--        @method('PUT')--}}
         {{--        @include('flash::message')--}}
@@ -27,17 +27,18 @@
         @endif
         <div class="form-group">
             <label for="nome-empresa">Nome da empresa</label>
-            <input type="text" class="form-control" id="nome-empresa" name="nome">
+            <input type="text" class="form-control" id="nome-empresa" name="nome" value="{{$empresa->nome}}">
+            <input type="hidden" class="form-control" id="nome-empresa" name="id" value="{{$empresa->id}}">
         </div>
 
         <div class="form-group">
             <label for="cnpj">CNPJ</label>
-            <input type="text" class="form-control" id="cnpj" name="cnpj">
+            <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{$empresa->cnpj}}">
         </div>
 
         <div class="form-group">
             <label for="chaveBling">Chave Bling</label>
-            <input type="text" class="form-control" id="chaveBling" name="chaveBling">
+            <input type="text" class="form-control" id="chaveBling" name="chaveBling" value="{{$empresa->chaveBling}}">
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>

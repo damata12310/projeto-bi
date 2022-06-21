@@ -33,4 +33,9 @@ class AuthuserController extends Controller
             return redirect()->back()->with('danger', 'E-mail ou senha inválida');
         }
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+    }
 }

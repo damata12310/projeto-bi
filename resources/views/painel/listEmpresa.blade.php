@@ -1,6 +1,6 @@
 @extends('painel.theme')
 @section('conteudo')
-    <div class="text">Nova Empresa</div>
+    <div class="text">Listagem de Empresas</div>
 
     <div class="">
         @if(session('error'))
@@ -34,7 +34,7 @@
                         <td>{{$empresa->nome}}</td>
                         <td>{{$empresa->cnpj}}</td>
                         <td>{{$empresa->chaveBling}}</td>
-                        <td><a href="{{url('/painel/editEmpresa/'.$empresa->id)}}"><i class='bx bx-edit'></i></a> </td>
+                        <td><a href="{{url('/painel/editaEmpresa/'.$empresa->id)}}"><i class='bx bx-edit'></i></a> </td>
                         <td><a href="{{url('/painel/deleteEmpresa/'.$empresa->id)}}"><i class='bx bx-x-circle'></i></a> </td>
                     </tr>
                 @endforeach

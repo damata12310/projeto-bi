@@ -23,6 +23,7 @@ use App\Http\Controllers\PainelController;
 
 Route::get('/', [AuthuserController::class, 'login'])->name('login.page');
 Route::post('/auth', [AuthuserController::class, 'auth'])->name('auth.user');
+Route::get('/logout', [AuthuserController::class, 'logout'])->name('logout.user');
 
 Route::middleware(['master'])->group(function (){
 
@@ -33,13 +34,18 @@ Route::middleware(['master'])->group(function (){
 
     //POST EMPRESA
     Route::post('/painel/criaEmpresa', [PainelController::class, 'criaEmpresa'])->name('criaEmpresa.painel');
-    Route::post('/painel/editaEmpresa', [PainelController::class, 'editaEmpresa'])->name('editaEmpresa.painel');
     Route::get('/painel/listEmpresa', [PainelController::class, 'listEmpresa'])->name('listEmpresa.painel');
     Route::get('/painel/deleteEmpresa/{id}', [PainelController::class, 'deleteEmpresa'])->name('deleteEmpresa.painel');
+    Route::get('/painel/editaEmpresa/{id}', [PainelController::class, 'editaEmpresa'])->name('editaEmpresa.painel');
+    Route::post('/painel/editaEmpresaPost', [PainelController::class, 'editaEmpresaPost'])->name('editaEmpresaPost.painel');
 
     //POST USUARIO
     Route::post('/painel/criaUsuario', [PainelController::class, 'criaUsuario'])->name('criaUsuario.painel');
-    Route::post('/painel/listUsuario', [PainelController::class, 'listUsuario'])->name('listUsuario.painel');
+    Route::get('/painel/listUsuario', [PainelController::class, 'listUsuario'])->name('listUsuario.painel');
+    Route::get('/painel/deleteUsuario/{id}', [PainelController::class, 'deleteUsuario'])->name('deleteUsuario.painel');
+
+    Route::get('/painel/editaUsuario/{id}', [PainelController::class, 'editaUsuario'])->name('editaUsuario.painel');
+    Route::post('/painel/editaUsuarioPost', [PainelController::class, 'editaUsuarioPost'])->name('editaUsuarioPost.painel');
 
 });
 

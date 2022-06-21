@@ -18,13 +18,6 @@ class PainelController extends Controller
         return view('painel.createEmpresa');
     }
 
-    public function listEmpresa()
-    {
-        $empresas = Empresa::get();
-
-        return view('painel.listEmpresa')->with('empresas', $empresas);
-    }
-
     public function createUsuario()
     {
         $empresas = Empresa::get();
@@ -32,6 +25,22 @@ class PainelController extends Controller
         return view('painel.createUser')->with('empresas', $empresas);
 
     }
+
+    public function listEmpresa()
+    {
+        $empresas = Empresa::get();
+
+        return view('painel.listEmpresa')->with('empresas', $empresas);
+    }
+
+    public function listUsuario()
+    {
+        $empresas = Empresa::get();
+        $usuarios = User::get();
+
+        return view('painel.listUsuarios')->with(['empresas' => $empresas, 'users' => $usuarios]);
+    }
+
 
     public function criaEmpresa(Request $request)
     {
@@ -100,9 +109,9 @@ class PainelController extends Controller
             }
 
             if($user->save()){
-                return redirect()->back()->with('sucess', 'Sucesso usuário criado com sucesso!!!');
+                return redirect('/painel/listUsuario')->with('sucess', 'Sucesso usuário criado com sucesso!!!');
             }else{
-                return redirect()->back()->with('error', 'Erro o usuário não foi criado...');
+                return redirect('/painel/listUsuario')->with('error', 'Erro o usuário não foi criado...');
             }
         }
     }
@@ -117,9 +126,69 @@ class PainelController extends Controller
         }
     }
 
-    public function logout(Request $request) {
-        Auth::logout();
-        return redirect('/login');
+    public function editaEmpresa(Request $request)
+    {
+        $empresa = Empresa::find($request->id);
+
+        return view('painel.editEmpresa')->with('empresa', $empresa);
+    }
+
+    public function editaEmpresaPost(Request $request)
+    {
+        if (isset($request)){
+
+            Empresa::findOrFail($request->id)->update([
+                'nome' => $request->nome,
+                'cnpj' => $request->cnpj,
+                'chaveBling' => $request->chaveBling
+            ]);
+            return redirect('/painel/listEmpresa')->with('success', 'Empresa alterada com sucesso!');
+        }else{
+            return redirect('/painel/listEmpresa')->with('error', 'Oooops, algo deu errado tente novamente!!!');
+        }
+    }
+
+    public function deleteUsuario(Request $request)
+    {
+        if(isset($request)){
+            User::destroy($request->id);
+            return redirect('/painel/listUsuario')->with('success', 'Usuário deletado(a) com sucesso!');
+        }else {
+            return redirect('/painel/listUsuario')->with('error', 'Oooops, algo deu errado tente novamente!!!');
+        }
+    }
+
+    public function editaUsuario(Request $request)
+    {
+        $user = User::find($request->id);
+        $empresa = Empresa::find($user->empresa_id);
+
+        return view('painel.editUsuario')->with(['empresa' => $empresa, 'user' => $user]);
+    }
+
+    public function editaUsuarioPost(Request $request)
+    {
+        if (isset($request)){
+
+            if($request->nivel == 'Master'){
+                $nivel = 'master';
+                $value = 1;
+            }elseif($request->nivel == 'Soulog'){
+                $nivel = 'soulog';
+                $value = 1;
+            }else{
+                $nivel = 'cliente';
+                $value = 1;
+            }
+
+            User::findOrFail($request->id)->update([
+                'name' => $request->name,
+                $nivel => $value,
+            ]);
+            return redirect('/painel/listUsuario')->with('success', 'Usuário alterado(a) com sucesso!');
+        }else{
+            return redirect('/painel/listUsuario')->with('error', 'Oooops, algo deu errado tente novamente!!!');
+        }
     }
 }
 
