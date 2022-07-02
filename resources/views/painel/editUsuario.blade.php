@@ -32,6 +32,11 @@
         </div>
 
         <div class="form-group">
+            <label for="nome-usuario">Senha</label>
+            <input type="text" class="form-control" id="nome-usuario" name="password" value="" placeholder="*****">
+        </div>
+
+        <div class="form-group">
             <label for="cnpj">Empresa</label>
             <input type="text" class="form-control" id="" name="" value="{{$empresa->nome}}" readonly>
             <input type="hidden" class="form-control" id="empresa_id" name="empresa_id" value="{{$user->empresa_id}}" readonly>

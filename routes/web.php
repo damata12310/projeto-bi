@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthuserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PainelController;
+use App\Http\Controllers\AppCliente;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,9 @@ Route::middleware(['soulog'])->group(function (){
 
 });
 
-Route::middleware(['cliente'])->group(function (){
+Route::middleware(['cliente'])->prefix('app')->group(function (){
+
+    Route::get('/teste', [AppCliente::class, 'teste']);
 
     Route::get('cliente', function (){
         dd('Você é um cliente');
