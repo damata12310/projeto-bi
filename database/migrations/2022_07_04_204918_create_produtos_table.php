@@ -15,21 +15,26 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
-            $table->longText('descricao');
-            $table->string('quantidade');
-            $table->string('valorunidade');
-            $table->string('precocusto');
-            $table->string('descontoItem');
-            $table->string('un');
-            $table->string('pesoBruto');
-            $table->string('largura');
-            $table->string('altura');
-            $table->string('profundidade');
-            $table->string('descricaoDetalhada');
-            $table->string('unidadeMedida');
-            $table->string('gtin');
+            $table->unsignedBigInteger('pedido_id');
+            $table->unsignedSmallInteger('empresa_id');
+            $table->string('codigo')->unique();
+            $table->longText('descricao')->nullable();
+            $table->string('quantidade')->nullable();
+            $table->string('valorunidade')->nullable();
+            $table->string('precocusto')->nullable();
+            $table->string('descontoItem')->nullable();
+            $table->string('un')->nullable();
+            $table->string('pesoBruto')->nullable();
+            $table->string('largura')->nullable();
+            $table->string('altura')->nullable();
+            $table->string('profundidade')->nullable();
+            $table->string('descricaoDetalhada')->nullable();
+            $table->string('unidadeMedida')->nullable();
+            $table->string('gtin')->nullable();
             $table->timestamps();
+
+            $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
         });
     }
 
