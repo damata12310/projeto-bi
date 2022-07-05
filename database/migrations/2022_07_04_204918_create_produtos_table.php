@@ -17,7 +17,7 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pedido_id');
             $table->unsignedSmallInteger('empresa_id');
-            $table->string('codigo')->unique();
+            $table->string('codigo');
             $table->longText('descricao')->nullable();
             $table->string('quantidade')->nullable();
             $table->string('valorunidade')->nullable();

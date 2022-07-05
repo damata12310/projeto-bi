@@ -61,6 +61,9 @@ Route::middleware(['soulog'])->group(function (){
 Route::middleware(['cliente'])->prefix('app')->group(function (){
 
     Route::get('/teste', [AppCliente::class, 'teste']);
+    Route::get('/contatos-bling', [AppCliente::class, 'contatosBling']);
+    Route::get('/pedidos-bling', [AppCliente::class, 'pedidosBling']);
+
 
     Route::get('cliente', function (){
         dd('Você é um cliente');

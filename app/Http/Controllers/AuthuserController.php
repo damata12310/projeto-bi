@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AppCliente;
 
 class AuthuserController extends Controller
 {
@@ -24,6 +25,8 @@ class AuthuserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            AppCliente::contatosBling();
+            AppCliente::pedidosBling();
             if(auth()->user()->master){
                 return redirect('/painel/home');
             }else{
