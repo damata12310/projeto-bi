@@ -10,18 +10,38 @@ use App\Models\Contato;
 
 class AppCliente extends Controller
 {
-    function chamadaBling($endpoint, $apikey){
+//    function chamadaBling($endpoint, $apikey){
+    function chamadaBling(){
 
-//        $response = file_get_contents("https://bling.com.br/Api/v2/pedidos/json/?apikey=e00d59341c007a4b734560dd8dc7cc08492077444034df49ee98397a40ee1e13f70f9726");
+        $response = file_get_contents("https://bling.com.br/Api/v2/pedidos/json/?apikey=e00d59341c007a4b734560dd8dc7cc08492077444034df49ee98397a40ee1e13f70f9726");
 //        $response = file_get_contents("https://bling.com.br/Api/v2/contatos/json/?apikey=e00d59341c007a4b734560dd8dc7cc08492077444034df49ee98397a40ee1e13f70f9726");
-        $url = "https://bling.com.br/Api/v2/".$endpoint."/json/?apikey=".$apikey;
-        $response = file_get_contents($url);
+//        $url = "https://bling.com.br/Api/v2/".$endpoint."/json/?apikey=".$apikey;
+//        $response = file_get_contents($url);
         $response = json_decode($response);
 
         return $response;
     }
 
-    public function teste()// trocar para o nome de contatos
+    public function teste()
+    {
+        $retorno = $this::chamadaBling();
+//
+//        foreach ($retorno->retorno->produtos as $produto) {
+//           if($produto->produto->descricao == "BASE TRILHO DIN 35MM P\/ RELE MRC C7 P\/PENTE S7-C ENTR MODULO CT D 75X22,5X26MM"){
+//               dd($produto);
+//           }
+//        }
+
+        foreach ($retorno->retorno->pedidos as $res){
+            dd($res);
+            foreach ($res->pedido->itens as $r){
+                dd($r);
+            }
+
+        }
+    }
+
+    public function ContatosBling()// trocar para o nome de contatos
     {
         $empresa = Empresa::where('id', auth()->user()->empresa_id)->first();
 
