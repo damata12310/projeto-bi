@@ -211,6 +211,7 @@
 <script type="text/javascript" src="{{url('/public/sistema/assets/js/jquery-ui.js')}}"></script>
 <script type="text/javascript" src="{{url('/public/sistema/assets/js/bootstrap.js')}}"></script>
 <script type="text/javascript" src="{{url('/public/sistema/assets/js/slick.js')}}"></script>
+@yield('js')
 <script>
     $( function() {
         $( "#slider-range" ).slider({

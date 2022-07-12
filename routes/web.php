@@ -52,6 +52,8 @@ Route::middleware(['master'])->group(function (){
 
 Route::middleware(['soulog'])->group(function (){
 
+    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
+
     Route::get('soulog', function (){
         dd('Você é um soulog');
     });
@@ -59,6 +61,8 @@ Route::middleware(['soulog'])->group(function (){
 });
 
 Route::middleware(['cliente'])->prefix('app')->group(function (){
+
+    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
 
     Route::get('/teste', [AppCliente::class, 'teste']);
     Route::get('/contatos-bling', [AppCliente::class, 'contatosBling']);

@@ -102,6 +102,9 @@ class AppCliente extends Controller
                 $pedido = new Pedido();
                 $pedido->contato_id = $contato->id;
                 $pedido->empresa_id = auth()->user()->empresa_id;
+                if(isset($res->pedido->tipoIntegracao)){
+                    $pedido->tipoIntegracao = $res->pedido->tipoIntegracao;
+                }
                 $pedido->desconto = $res->pedido->desconto;
                 $pedido->observacoes = $res->pedido->observacoes;
                 $pedido->observacaointerna = $res->pedido->observacaointerna;
@@ -119,24 +122,26 @@ class AppCliente extends Controller
                 $pedido->save();
 
                 foreach ($res->pedido->itens as $r){
-                    $item = new Produto();
-                    $item->pedido_id = $pedido->id;
-                    $item->empresa_id = auth()->user()->empresa_id;
-                    $item->codigo = $r->item->codigo;
-                    $item->descricao = $r->item->descricao;
-                    $item->quantidade = $r->item->quantidade;
-                    $item->valorunidade = $r->item->valorunidade;
-                    $item->precocusto = $r->item->precocusto;
-                    $item->descontoItem = $r->item->descontoItem;
-                    $item->un = $r->item->un;
-                    $item->pesoBruto = $r->item->pesoBruto;
-                    $item->largura = $r->item->largura;
-                    $item->altura = $r->item->altura;
-                    $item->profundidade = $r->item->profundidade;
-                    $item->descricaoDetalhada = $r->item->descricaoDetalhada;
-                    $item->unidadeMedida = $r->item->unidadeMedida;
-                    $item->gtin = $r->item->gtin;
-                    $item->save();
+                    if(isset($r->item->codigo)){
+                        $item = new Produto();
+                        $item->pedido_id = $pedido->id;
+                        $item->empresa_id = auth()->user()->empresa_id;
+                        $item->codigo = $r->item->codigo;
+                        $item->descricao = $r->item->descricao;
+                        $item->quantidade = $r->item->quantidade;
+                        $item->valorunidade = $r->item->valorunidade;
+                        $item->precocusto = $r->item->precocusto;
+                        $item->descontoItem = $r->item->descontoItem;
+                        $item->un = $r->item->un;
+                        $item->pesoBruto = $r->item->pesoBruto;
+                        $item->largura = $r->item->largura;
+                        $item->altura = $r->item->altura;
+                        $item->profundidade = $r->item->profundidade;
+                        $item->descricaoDetalhada = $r->item->descricaoDetalhada;
+                        $item->unidadeMedida = $r->item->unidadeMedida;
+                        $item->gtin = $r->item->gtin;
+                        $item->save();
+                    }
                 }
             }
         }
