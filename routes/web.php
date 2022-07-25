@@ -26,6 +26,12 @@ Route::get('/', [AuthuserController::class, 'login'])->name('login.page');
 Route::post('/auth', [AuthuserController::class, 'auth'])->name('auth.user');
 Route::get('/logout', [AuthuserController::class, 'logout'])->name('logout.user');
 
+
+
+//Route::get('/teste', [AppCliente::class, 'teste']);
+Route::get('/teste', [AppCliente::class, 'categoriasBling']);
+Route::get('/teste1', [AppCliente::class, 'produtosBling']);
+
 Route::middleware(['master'])->group(function (){
 
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
@@ -48,11 +54,16 @@ Route::middleware(['master'])->group(function (){
     Route::get('/painel/editaUsuario/{id}', [PainelController::class, 'editaUsuario'])->name('editaUsuario.painel');
     Route::post('/painel/editaUsuarioPost', [PainelController::class, 'editaUsuarioPost'])->name('editaUsuarioPost.painel');
 
+
+    Route::get('/app/dashboard', [DashboardController::class, 'home'])->name('dash.home');
+
 });
 
 Route::middleware(['soulog'])->group(function (){
 
-    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
+    //Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
+
+    Route::get('/app/dashboard', [DashboardController::class, 'home'])->name('dash.home');
 
     Route::get('soulog', function (){
         dd('Você é um soulog');
@@ -60,11 +71,13 @@ Route::middleware(['soulog'])->group(function (){
 
 });
 
-Route::middleware(['cliente'])->prefix('app')->group(function (){
+Route::middleware(['cliente'])->group(function (){
 
-    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dash.home');
+    Route::get('/app/dashboard', [DashboardController::class, 'home'])->name('dash.home');
 
-    Route::get('/teste', [AppCliente::class, 'teste']);
+
+
+
     Route::get('/contatos-bling', [AppCliente::class, 'contatosBling']);
     Route::get('/pedidos-bling', [AppCliente::class, 'pedidosBling']);
 

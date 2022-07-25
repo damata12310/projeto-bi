@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Contato;
 use App\Models\Pedido;
 use App\Models\Produto;
+use App\Models\Categoria;
 
 
 class AppCliente extends Controller
@@ -19,6 +20,77 @@ class AppCliente extends Controller
         $response = json_decode($response);
 
         return $response;
+    }
+
+//    public function teste()
+//    {
+//        $empresa = Empresa::where('id', auth()->user()->empresa_id)->first();
+//        $apikey = $empresa->chaveBling;
+//        $teste = new AppCliente;
+//
+//        $endpoint = 'categorias';
+//
+//        $retorno = $teste->chamadaBling($endpoint, $apikey);
+//
+//        dd($retorno);
+//    }
+
+    public function categoriasBling()
+    {
+        $empresa = Empresa::where('id', auth()->user()->empresa_id)->first();
+        $apikey = $empresa->chaveBling;
+        $catbling = new AppCliente;
+
+        $endpoint = 'categorias';
+
+        $categorias = $catbling->chamadaBling($endpoint, $apikey);
+
+        $catVerifica = Categoria::where('empresa_id', auth()->user()->empresa_id)->get();
+
+        $arrVerifica = [];
+        foreach ($catVerifica as $res){
+            array_push($arrVerifica, $res->id_cat_bling);
+        }
+
+        foreach ($categorias as $categoria){
+            foreach ($categoria->categorias as $res){
+                var_dump($categoria->categorias);
+//                if(!in_array($res->categoria->id, $arrVerifica)) {
+//                    $categoria = new Categoria();
+//                    $categoria->empresa_id = $empresa->id;
+//                    $categoria->id_cat_bling = $res->categoria->id ;
+//                    $categoria->descricao = $res->categoria->descricao ;
+//                    $categoria->save();
+//                }
+
+            }
+        }
+    }
+
+    public function produtosBling()
+    {
+        $empresa = Empresa::where('id', auth()->user()->empresa_id)->first();
+        $apikey = $empresa->chaveBling;
+        $prdBling = new AppCliente;
+        $endpoint = 'produtos';
+
+        $produtos = $prdBling->chamadaBling($endpoint, $apikey);
+
+        $produtosVerifica = Produto::where('empresa_id', auth()->user()->empresa_id)->get();
+
+        $prodVerifica = [];
+        foreach ($produtosVerifica as $res){
+            array_push($prodVerifica, $res->id_prod_bling);
+        }
+
+        foreach ($produtos as $prod){
+            foreach ($prod->produtos as $produto) {
+
+                $categoria = Categoria::where(['empresa_id' => $empresa->id, 'id_cat_bling' => $produto->produto->categoria->id])->get();
+
+                dd($produto->produto);
+            }
+        }
     }
 
     public function pedidosBling()
@@ -198,6 +270,25 @@ class AppCliente extends Controller
                 $contato->save();
             }
         }
+    }
+
+    public function getMarketplaceHome()
+    {
+        $empresa = auth()->user()->empresa_id;
+
+        $pedidos = Pedido::where('empresa_id', $empresa)->get();
+        $tipoIntegracao = [];
+        $totalvenda = [];
+        $soma =0;
+        foreach ($pedidos as $ped){
+            if($ped->tipoIntegracao == 'SkyHub'){
+                $soma = $soma + $ped->totalvenda;
+                array_push($tipoIntegracao, $ped->tipoIntegracao);
+                array_push($totalvenda, $soma);
+            }
+        }
+
+        dd($tipoIntegracao, $totalvenda);
     }
 
 }

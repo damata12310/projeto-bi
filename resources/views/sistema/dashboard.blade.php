@@ -1,7 +1,7 @@
 @extends('sistema.theme')
 @section('conteudo')
 <div class="row mt-4">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="div_containers_itens_dashboard ">
             <h5>Análise por Marketplace</h5>
             <div class="tabela_dashboard">
@@ -15,96 +15,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Mercado Livre</td>
-                        <td>R$1.094.320,22</td>
-                        <td>5.204</td>
-                        <td>R$210,28</td>
-                    </tr>
-                    <tr>
-                        <td>Shopee</td>
-                        <td>R$248.966,88</td>
-                        <td>3.435</td>
-                        <td>R$72,48</td>
-                    </tr>
-                    <tr>
-                        <td>Olist</td>
-                        <td>R$233.909,28</td>
-                        <td>1.651</td>
-                        <td>R$141,68</td>
-                    </tr>
-                    <tr>
-                        <td>B2W</td>
-                        <td>R$157.974,24</td>
-                        <td>765</td>
-                        <td>R$206,50</td>
-                    </tr>
-                    <tr>
-                        <td>Magalu</td>
-                        <td>R$135.081,92</td>
-                        <td>663</td>
-                        <td>R$203,74</td>
-                    </tr>
-                    <tr>
-                        <td>Tray</td>
-                        <td>R$59.354,15</td>
-                        <td>349</td>
-                        <td>R$170,07</td>
-                    </tr>
-                    <tr>
-                        <td>Amazon</td>
-                        <td>R$56.730,96</td>
-                        <td>381</td>
-                        <td>R$148,90</td>
-                    </tr>
-                    <tr>
-                        <td>Mercado Livre</td>
-                        <td>R$1.094.320,22</td>
-                        <td>5.204</td>
-                        <td>R$210,28</td>
-                    </tr>
-                    <tr>
-                        <td>Shopee</td>
-                        <td>R$248.966,88</td>
-                        <td>3.435</td>
-                        <td>R$72,48</td>
-                    </tr>
-                    <tr>
-                        <td>Olist</td>
-                        <td>R$233.909,28</td>
-                        <td>1.651</td>
-                        <td>R$141,68</td>
-                    </tr>
-                    <tr>
-                        <td>B2W</td>
-                        <td>R$157.974,24</td>
-                        <td>765</td>
-                        <td>R$206,50</td>
-                    </tr>
-                    <tr>
-                        <td>Magalu</td>
-                        <td>R$135.081,92</td>
-                        <td>663</td>
-                        <td>R$203,74</td>
-                    </tr>
-                    <tr>
-                        <td>Tray</td>
-                        <td>R$59.354,15</td>
-                        <td>349</td>
-                        <td>R$170,07</td>
-                    </tr>
-                    <tr>
-                        <td>Amazon</td>
-                        <td>R$56.730,96</td>
-                        <td>381</td>
-                        <td>R$148,90</td>
-                    </tr>
+                    @foreach($dados as $d)
+                        <tr>
+                            <td>{{$d['nome']}}</td>
+                            <td>R$ {{$d['totalVendas']}}</td>
+                            <td>{{$d['qtdVendas']}}</td>
+                            <td>R$ {{$d['media']}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-6">
         <div class="div_containers_itens_dashboard ">
             <h5>Faturamento (R$) por Ano e Mês</h5>
             <div class="" id="chart">

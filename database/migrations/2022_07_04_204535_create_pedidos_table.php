@@ -17,6 +17,7 @@ class CreatePedidosTable extends Migration
             $table->id();
             $table->unsignedSmallInteger('contato_id');
             $table->unsignedSmallInteger('empresa_id');
+            $table->string('tipoIntegracao')->default('Bling')->nullable();
             $table->string('desconto')->nullable();
             $table->longText('observacoes')->nullable();
             $table->longText('observacaointerna')->nullable();

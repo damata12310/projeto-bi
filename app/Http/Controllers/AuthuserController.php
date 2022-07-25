@@ -25,12 +25,15 @@ class AuthuserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            AppCliente::contatosBling();
-            AppCliente::pedidosBling();
+//            AppCliente::contatosBling();
+//            AppCliente::pedidosBling();
             if(auth()->user()->master){
                 return redirect('/painel/home');
+            }else if(auth()->user()->soulog) {
+                return redirect('/app/dashboard');
             }else{
-                return redirect('/dashboard');
+//                dd('aqui');
+                return redirect('/app/dashboard');
             }
         }else {
             return redirect()->back()->with('danger', 'E-mail ou senha inválida');
