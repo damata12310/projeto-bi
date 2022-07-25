@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="{{url('/public/painel/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{url('/painel/assets/css/style.css')}}">
 {{--    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/bootstrap.css')}}">--}}
 
     <!----===== Boxicons CSS ===== -->
@@ -20,7 +20,7 @@
     <header>
         <div class="image-text">
                 <span class="image">
-                    <img src="{{url('/public/painel/assets/images/logo.png')}}" alt="">
+                    <img src="{{url('/painel/assets/images/logo.png')}}" alt="">
                 </span>
 
             <div class="text logo-text">
@@ -146,7 +146,7 @@
 </section>
 
 
-<script src="{{url('/public/painel/assets/js/script.js')}}"></script>
+<script src="{{url('/painel/assets/js/script.js')}}"></script>
 
 </body>
 </html>

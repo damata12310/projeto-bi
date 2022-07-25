@@ -54,15 +54,13 @@ class AppCliente extends Controller
 
         foreach ($categorias as $categoria){
             foreach ($categoria->categorias as $res){
-                var_dump($categoria->categorias);
-//                if(!in_array($res->categoria->id, $arrVerifica)) {
-//                    $categoria = new Categoria();
-//                    $categoria->empresa_id = $empresa->id;
-//                    $categoria->id_cat_bling = $res->categoria->id ;
-//                    $categoria->descricao = $res->categoria->descricao ;
-//                    $categoria->save();
-//                }
-
+                if(!in_array($res->categoria->id, $arrVerifica)) {
+                    $categoria = new Categoria();
+                    $categoria->empresa_id = $empresa->id;
+                    $categoria->id_cat_bling = $res->categoria->id ;
+                    $categoria->descricao = $res->categoria->descricao ;
+                    $categoria->save();
+                }
             }
         }
     }

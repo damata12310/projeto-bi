@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/slick.css')}}">
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/jquery-ui.css')}}">
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/apexcharts.css')}}">
-    <link rel="stylesheet" href="{{url('/public/sistema/assets/css/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/apexcharts.css')}}">
+    <link rel="stylesheet" href="{{url('/sistema/assets/css/slick-theme.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
@@ -206,11 +206,11 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="{{url('/public/sistema/assets/js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript" src="{{url('/public/sistema/assets/js/apexcharts.js')}}"></script>
-<script type="text/javascript" src="{{url('/public/sistema/assets/js/jquery-ui.js')}}"></script>
-<script type="text/javascript" src="{{url('/public/sistema/assets/js/bootstrap.js')}}"></script>
-<script type="text/javascript" src="{{url('/public/sistema/assets/js/slick.js')}}"></script>
+<script type="text/javascript" src="{{url('/sistema/assets/js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/sistema/assets/js/apexcharts.js')}}"></script>
+<script type="text/javascript" src="{{url('/sistema/assets/js/jquery-ui.js')}}"></script>
+<script type="text/javascript" src="{{url('/sistema/assets/js/bootstrap.js')}}"></script>
+<script type="text/javascript" src="{{url('/sistema/assets/js/slick.js')}}"></script>
 @yield('js')
 <script>
     $( function() {
